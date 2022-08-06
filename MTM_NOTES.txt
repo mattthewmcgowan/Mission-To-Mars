@@ -1,0 +1,10 @@
+Module 10: Web Scraping
+
+Objective: 
+
+1. To use web scraping to extract the most recently published articles's titles and summary. 
+
+2. Use Splinter to automate a browser. 
+
+3. Use BeautifulSoup to do the scraping. 
+
