@@ -20,7 +20,7 @@ browser = Browser('chrome', **executable_path, headless=False)
 
 
 # In[3]:
-
+## News Title and Paragraph 
 
 def mars_news(browser):
 
@@ -81,40 +81,25 @@ def featured_image(browser):
     return img_url
 
 # In[15]:
+### Mars Facts 
 
+def mars_facts():
+    # Add try/except for error handling
+    try:
+        # Use 'read_html' to scrape the facts table into a dataframe
+        df = pd.read_html('https://galaxyfacts-mars.com')[0]
+
+    except BaseException:
+        return None
+
+    # Assign columns and set index of dataframe
+    df.columns=['Description', 'Mars', 'Earth']
+    df.set_index('Description', inplace=True)
+
+    # Convert dataframe into HTML format, add bootstrap
+    return df.to_html()
 
 df = pd.read_html('https://galaxyfacts-mars.com')[0]
-
-# we're creating a new DF from the HTML table. The pandas function read_htlm specifically searches for and returns a list of 
-# tables found in the HTML. By specifying an index [0], we're telling Pandas to pull only the first table it encounters, or the 
-# first item in the list. 
-
-df.columns = ['description', 'Mars', 'Earth']
-
-# Here we assign column to the new DF for additional clarity. 
-
-df.set_index('description', inplace=True)
-
-# we're turning the description column into the DF's index. inplace=true means that the updated index will remain in place,
-#without having to reassign the DF to a new variable.
-
-df
-
-
-# In[16]:
-
-
-# Convert the DF back into HTML-ready code. 
-df.to_html()
-
-
-# In[17]:
-
-
-browser.quit()
-
-
-# In[ ]:
 
 
 
