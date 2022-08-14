@@ -14,8 +14,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 # Scrape all Function 
 def scrape_all():
     # Initiate headless driver for deployment
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=True)
+    #executable_path= "chromedriver"
+    browser = Browser("chrome",executable_path="chromedriver",headless=False)
 
     news_title, news_paragraph= mars_news(browser)
 
@@ -29,8 +29,9 @@ def scrape_all():
 }
      # Stop webdriver and return data
     browser.quit()
+    print("Scrape all has run")
     return data
-
+scrape_all()
 # News Title and Paragraph Function
 
 def mars_news(browser):
